@@ -14,7 +14,10 @@ if ! command -v apt-get >/dev/null; then
 fi
 
 apt-get update
-apt-get install -y apache2 nodejs npm qrencode rsync sqlite3
+# NodeSource's Node.js package already bundles npm and conflicts with Debian's
+# separate `npm` package on Debian 13. This project has no npm dependencies, so
+# installing the separate package is unnecessary and can force a Node downgrade.
+apt-get install -y apache2 nodejs qrencode rsync sqlite3
 systemctl stop home-lab 2>/dev/null || true
 id -u home-lab >/dev/null 2>&1 || useradd --system --home "$APP_DIR" --shell /usr/sbin/nologin home-lab
 install -d -o home-lab -g home-lab "$APP_DIR" "$APP_DIR/data" "$APP_DIR/uploads" "$APP_DIR/data/backups"

@@ -21,8 +21,9 @@ stored in `uploads/`.
 1. In Technitium, create `A` records for `home.lab`, `tools.home.lab`, and
    `status.home.lab` that point to `192.168.11.12`.
 2. Run `sudo ./scripts/setup.sh` from this checkout. It installs missing Debian
-   packages, copies the project to `/opt/home-lab`, creates the systemd service,
-   and enables Apache virtual hosts.
+   packages (without installing Debian's separate `npm` package, which conflicts
+   with NodeSource Node.js on Debian 13), copies the project to `/opt/home-lab`,
+   creates the systemd service, and enables Apache virtual hosts.
 3. Open `http://home.lab`. The admin area is at `http://home.lab/admin` and is
    limited to `192.168.11.0/24` by Apache and the application.
 
