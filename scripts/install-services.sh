@@ -20,6 +20,17 @@ mkdir -p "$SERVICES_DIR"/{filebrowser/database,filebrowser/config,portainer,upti
 cd "$SERVICES_DIR"
 docker compose pull
 docker compose up -d
+
+if ! docker compose exec -T files filebrowser users ls --database /database/filebrowser.db 2>/dev/null | grep -q 'admin'; then
+  echo "Create the initial File Browser administrator account."
+  read -r -p "Administrator username [admin]: " FILES_ADMIN
+  FILES_ADMIN="${FILES_ADMIN:-admin}"
+  read -r -s -p "Administrator password: " FILES_PASSWORD
+  echo
+  [[ -n "$FILES_PASSWORD" ]] || { echo "A password is required." >&2; exit 1; }
+  docker compose exec -T files filebrowser users add "$FILES_ADMIN" "$FILES_PASSWORD" --perm.admin --database /database/filebrowser.db
+  unset FILES_PASSWORD
+fi
 apache2ctl configtest
 systemctl reload apache2
 cat <<'EOF'
@@ -29,5 +40,5 @@ Services are running locally. Add these Technitium A records -> 192.168.11.12:
   portainer.home.lab
   uptime.home.lab
 
-Open files.home.lab first and create the File Browser administrator account.
+Open files.home.lab and sign in with the administrator account you created.
 EOF

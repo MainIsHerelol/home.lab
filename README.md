@@ -37,7 +37,9 @@ With Docker already installed, run `sudo ./scripts/install-services.sh` to creat
 the `/srv/family` storage directory and launch File Browser, Portainer, and Uptime
 Kuma. The containers listen only on localhost; Apache publishes them at
 `files.home.lab`, `portainer.home.lab`, and `uptime.home.lab`. Add all three as
-Technitium `A` records pointing at `192.168.11.12` before opening them.
+Technitium `A` records pointing at `192.168.11.12` before opening them. The
+installer securely prompts for the initial File Browser administrator username
+and password; it does not use a public default password.
 
 > The included Apache configuration uses HTTP on a trusted LAN. Add internal TLS
 > only after you have a certificate strategy trusted by your household devices.
