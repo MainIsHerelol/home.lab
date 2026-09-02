@@ -1,0 +1,40 @@
+services:
+  files:
+    image: filebrowser/filebrowser:s6
+    container_name: home-lab-files
+    restart: unless-stopped
+    command:
+      - --database
+      - /database/filebrowser.db
+      - --root
+      - /srv
+      - --address
+      - 0.0.0.0
+      - --port
+      - "80"
+    ports:
+      - "127.0.0.1:8081:80"
+    volumes:
+      - /srv/family:/srv
+      - ./filebrowser/database:/database
+      - ./filebrowser/config:/config
+
+  portainer:
+    image: portainer/portainer-ce:latest
+    container_name: home-lab-portainer
+    restart: unless-stopped
+    command: --http-enabled
+    ports:
+      - "127.0.0.1:9000:9000"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ./portainer:/data
+
+  uptime-kuma:
+    image: louislam/uptime-kuma:1
+    container_name: home-lab-uptime-kuma
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:3001:3001"
+    volumes:
+      - ./uptime-kuma:/app/data
