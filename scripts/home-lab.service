@@ -1,0 +1,22 @@
+[Unit]
+Description=Home Lab family portal
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=home-lab
+Group=home-lab
+WorkingDirectory=/opt/home-lab
+Environment=NODE_ENV=production
+Environment=PORT=3080
+ExecStart=/usr/bin/node /opt/home-lab/src/server.js
+Restart=on-failure
+RestartSec=5
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=full
+ReadWritePaths=/opt/home-lab/data /opt/home-lab/uploads
+
+[Install]
+WantedBy=multi-user.target
