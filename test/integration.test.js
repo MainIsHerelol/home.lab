@@ -15,7 +15,7 @@ const get = (path, host = 'home.lab') => new Promise((resolve, reject) => http.g
 }).on('error', reject));
 
 test('serves the family, tools, and status sites by hostname', async () => {
-  for (const [host, title] of [['home.lab', 'Home Lab'], ['tools.home.lab', 'Home Lab Tools'], ['status.home.lab', 'Home Lab Status']]) {
+  for (const [host, title] of [['home.lab', 'Home Lab · Home'], ['tools.home.lab', 'Home Lab · Tools'], ['status.home.lab', 'Home Lab · Status']]) {
     const response = await get('/', host);
     assert.equal(response.status, 200);
     assert.match(response.text(), new RegExp(`<title>${title}`));
