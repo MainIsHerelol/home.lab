@@ -5,18 +5,18 @@
     { "id": "tools", "title": "Home Lab Tools", "description": "QR codes, converters, document helpers, and more.", "url": "http://tools.home.lab", "icon": "🧰", "section": "Home services", "enabled": true },
     { "id": "status", "title": "System Status", "description": "See whether home services are working normally.", "url": "http://status.home.lab", "icon": "📈", "section": "Home services", "enabled": true },
     { "id": "dns", "title": "Technitium DNS", "description": "DNS server administration.", "url": "http://192.168.11.12:5380", "icon": "🌐", "section": "Home services", "enabled": true },
-    { "id": "nas", "title": "Shared Storage", "description": "NAS service — coming soon.", "url": "", "icon": "💾", "section": "Home services", "enabled": false },
-    { "id": "kuma", "title": "Uptime Kuma", "description": "Monitoring service — coming soon.", "url": "", "icon": "🩺", "section": "Home services", "enabled": false },
-    { "id": "portainer", "title": "Portainer", "description": "Container administration — coming soon.", "url": "", "icon": "📦", "section": "Home services", "enabled": false },
+    { "id": "nas", "title": "Family Files", "description": "Private shared files for the household.", "url": "http://files.home.lab", "icon": "💾", "section": "Home services", "enabled": true },
+    { "id": "kuma", "title": "Uptime Kuma", "description": "Manage service monitoring and alerts.", "url": "http://uptime.home.lab", "icon": "🩺", "section": "Home services", "enabled": true },
+    { "id": "portainer", "title": "Portainer", "description": "Manage Docker containers and updates.", "url": "http://portainer.home.lab", "icon": "📦", "section": "Home services", "enabled": true },
     { "id": "proxmox", "title": "Proxmox", "description": "Virtualization management — coming soon.", "url": "", "icon": "🖥️", "section": "Home services", "enabled": false },
     { "id": "games", "title": "Game Servers", "description": "Game servers — coming soon.", "url": "", "icon": "🎮", "section": "Home services", "enabled": false }
   ],
   "services": [
     { "id": "portal", "name": "Home Lab portal", "url": "http://127.0.0.1:3080/api/health", "enabled": true },
     { "id": "dns", "name": "Technitium DNS", "url": "http://127.0.0.1:5380", "enabled": true },
-    { "id": "nas", "name": "Shared Storage", "url": "", "enabled": false },
-    { "id": "kuma", "name": "Uptime Kuma", "url": "", "enabled": false },
-    { "id": "portainer", "name": "Portainer", "url": "", "enabled": false },
+    { "id": "nas", "name": "Family Files", "url": "http://127.0.0.1:8081", "enabled": true },
+    { "id": "kuma", "name": "Uptime Kuma", "url": "http://127.0.0.1:3001", "enabled": true },
+    { "id": "portainer", "name": "Portainer", "url": "http://127.0.0.1:9000", "enabled": true },
     { "id": "proxmox", "name": "Proxmox", "url": "", "enabled": false },
     { "id": "games", "name": "Game Servers", "url": "", "enabled": false }
   ]

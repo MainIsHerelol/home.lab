@@ -27,7 +27,7 @@ chown -R home-lab:home-lab "$APP_DIR"
 
 install -m 0644 "$APP_DIR/scripts/home-lab.service" /etc/systemd/system/home-lab.service
 install -m 0644 "$APP_DIR/scripts/apache-home-lab.conf" /etc/apache2/sites-available/home-lab.conf
-a2enmod proxy proxy_http headers
+a2enmod proxy proxy_http proxy_wstunnel headers
 a2ensite home-lab.conf
 apache2ctl configtest
 systemctl daemon-reload

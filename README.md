@@ -31,5 +31,13 @@ Edit `data/config.json` (or use `/admin`) to maintain dashboard cards and servic
 checks. Run `sudo ./scripts/backup.sh` to create a local backup. The systemd unit
 keeps the Node service running after boot.
 
+## Optional household services
+
+With Docker already installed, run `sudo ./scripts/install-services.sh` to create
+the `/srv/family` storage directory and launch File Browser, Portainer, and Uptime
+Kuma. The containers listen only on localhost; Apache publishes them at
+`files.home.lab`, `portainer.home.lab`, and `uptime.home.lab`. Add all three as
+Technitium `A` records pointing at `192.168.11.12` before opening them.
+
 > The included Apache configuration uses HTTP on a trusted LAN. Add internal TLS
 > only after you have a certificate strategy trusted by your household devices.
